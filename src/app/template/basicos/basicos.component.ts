@@ -1,6 +1,6 @@
 import { JsonPipe } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { Component, ViewChild } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms'
 
 @Component({
   selector: 'app-basicos',
@@ -9,8 +9,15 @@ import { FormsModule } from '@angular/forms'
 })
 export class BasicosComponent {
 
-  save(form:any){
-    console.log(form);
+  @ViewChild('myForm') myForm! : NgForm;
+
+  notValid(field: string): boolean {
+    return this.myForm.controls[field].invalid && this.myForm.controls[field].touched
+  }
+
+  save(){
+    console.log(this.myForm);
+    this.myForm.control.markAllAsTouched()
   }
 
 }
