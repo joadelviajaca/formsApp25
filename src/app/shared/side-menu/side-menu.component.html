@@ -1,0 +1,27 @@
+<h2>Template</h2>
+<hr>
+
+<ul class="list-group">
+    @for (item of templateMenu; track $index) {
+
+    <li class="list-group-item" [routerLink]="[ item.ruta ]" routerLinkActive="active">
+        {{ item.texto }}
+    </li>
+    }
+
+</ul>
+
+<h2 class="mt-3">Reactive</h2>
+<hr>
+
+<ul class="list-group">
+    @for (item of reactiveMenu; track $index) {
+
+    <li class="list-group-item" [routerLink]="[ item.ruta ]"
+        routerLinkActive="active">
+        {{ item.texto }}
+    </li>
+
+    }
+
+</ul>
