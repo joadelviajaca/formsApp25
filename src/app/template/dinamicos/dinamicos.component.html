@@ -29,10 +29,13 @@
 
         <div class="input-group">
             <input class="form-control"
-                   placeholder="Agregar favorito">
+                   placeholder="Agregar favorito"
+                   name="name"
+                   [(ngModel)]="name">
 
             <button class="btn btn-outline-primary"
-                    type="button">
+                    type="button"
+                    (click)="agregarFavorito()">
                 Agregar
             </button>
         </div>
@@ -51,7 +54,8 @@
                 <input name="favorito-{{favorito.id}}" class="form-control" [(ngModel)]="favorito.nombre">
     
                 <button class="btn btn-outline-danger"
-                        type="button">
+                        type="button"
+                        (click)="borrarFavorito(favorito.id)">
                    Eliminar
                </button>
             </div>
