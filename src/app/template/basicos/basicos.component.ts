@@ -12,7 +12,7 @@ export class BasicosComponent {
   @ViewChild('myForm') myForm! : NgForm;
 
   notValid(field: string): boolean {
-    return this.myForm.controls[field].invalid && this.myForm.controls[field].touched
+    return this.myForm?.controls[field].invalid && this.myForm?.controls[field].touched
   }
 
   save(){

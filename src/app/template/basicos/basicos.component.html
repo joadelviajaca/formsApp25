@@ -59,7 +59,7 @@
 
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary float-end">
+                    <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary float-end">
                         Guardar
                     </button>
                 </div>
@@ -85,7 +85,7 @@
                 <pre>{{ myForm.value | json }}</pre>
 
                 <span>Errores existencias</span>
-                <pre>{{ myForm.controls['existencias']?.errors | json }}</pre>
+                <!-- <pre>{{ myForm.controls['existencias']?.errors | json }}</pre> -->
 
             </div>
         </div>
