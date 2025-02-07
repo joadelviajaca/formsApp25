@@ -11,7 +11,7 @@
                 name="name"
                 minlength="4"
                 required
-                ngModel
+                [(ngModel)]="persona.nombre"
                 >
                 @if (notValid("name")) {
 
@@ -38,24 +38,27 @@
         </div>
     </div>
 </div>
-
-
 <!-- Lista de Juegos Favoritos -->
-<div class="mb-3 row">
-    <label class="col-sm-3 col-form-label">Favoritos</label>
-    <div class="col-sm-9">
 
-        <div class="input-group mb-1">
-            <input class="form-control">
 
-            <button class="btn btn-outline-danger"
-                    type="button">
-               Eliminar
-           </button>
+@for (favorito of persona.favoritos; track favorito.id) {
+
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Favoritos</label>
+        <div class="col-sm-9">
+    
+            <div class="input-group mb-1">
+                <input name="favorito-{{favorito.id}}" class="form-control" [(ngModel)]="favorito.nombre">
+    
+                <button class="btn btn-outline-danger"
+                        type="button">
+                   Eliminar
+               </button>
+            </div>
+    
         </div>
-
     </div>
-</div>
+}
 
 
 
@@ -64,5 +67,8 @@
         <button class="btn btn-primary float-end" [disabled]="myForm.invalid">Guardar</button>
     </div>
 </div>
+
+<span>Persona</span>
+<pre>{{persona|json}}</pre>
 
 </form>

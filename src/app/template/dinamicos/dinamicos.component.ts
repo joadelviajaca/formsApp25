@@ -1,10 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Persona } from '../../interfaces/persona';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-dinamicos',
-  imports: [FormsModule],
+  imports: [FormsModule, JsonPipe],
   templateUrl: './dinamicos.component.html'
 })
 export class DinamicosComponent {
