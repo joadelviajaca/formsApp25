@@ -1,28 +1,58 @@
 <h2>Template: <small> Dinámicos </small></h2>
 <hr>
 
-<form autocomplete="off">
-<div class="mb-3 row">
-    <label class="col-sm3 col-form-label">Nombre</label>
-    <div class="col-sm-9">
-        <input type="text" 
-                class="form-control"
-                placeholder="Nombre de la persona"
-                >
-                <span class="form-text text-danger">
-                    Este campo es obligatorio
-                </span>
-    </div>
-</div>
+<form [formGroup]="myForm" autocomplete="off">
+    <div class="mb-3 row">
+        <label class="col-sm3 col-form-label">Nombre</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" placeholder="Nombre de la persona" formControlName="name">
+            @if(isValidField('name')){
 
-<div class="row">
-    <div class="col-sm-12">
-        <button class="btn btn-primary float-end">Guardar</button>
+            <span class="form-text text-danger">
+                Este campo es obligatorio
+            </span>
+            }
+        </div>
     </div>
-</div>
+
+    <!-- Agregar Favorito -->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Agregar</label>
+        <div class="col-sm-9">
+
+            <div class="input-group">
+                <input class="form-control" placeholder="Agregar favorito" [formControl]="newFavourite" (keyup.enter)="addFavourite()">
+
+                <button class="btn btn-outline-primary" type="button" (click)="addFavourite()">
+                    Agregar
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Lista de Juegos Favoritos -->
+
+
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Favoritos</label>
+        <div class="col-sm-9" formArrayName="favourites">
+            @for (favourite of favourites.controls; track favourite.value) {
+            <div class="input-group mb-1">
+                <input class="form-control" [formControlName]="$index">
+                <button class="btn btn-outline-danger" type="button" (click)="delete($index)">
+                    Eliminar
+                </button>
+            </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn btn-primary float-end">Guardar</button>
+        </div>
+    </div>
 
 </form>
 
-<!-- <div>
+<div>
     <pre>{{myForm.value|json}}</pre>
-</div> -->
+</div>

@@ -3,35 +3,44 @@
 <div class="row">
     <div class="col">
 
-        <form [formGroup]="myForm">
+        <form [formGroup]="myForm" (ngSubmit)="submit()">
             <!-- Campo de producto -->
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Producto</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" placeholder="Nombre del producto" formControlName="nombre" required minlength="3">
-                    <span class="form-text text-danger">
-                        Debe de ser de 3 letras
-                    </span>
+                    <input type="text" class="form-control" placeholder="Nombre del producto" formControlName="nombre">
+                    @if (isValidField('nombre')) {
+
+                        <span class="form-text text-danger">
+                            Debe de ser de 3 letras
+                        </span>
+                    }
                 </div>
             </div>
             <!-- Campo de producto -->
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Precio</label>
                 <div class="col-sm-9">
-                    <input type="number" class="form-control" placeholder="Precio del producto" formControlName="precio" required min="0">
-                    <span class="form-text text-danger">
-                        Debe de ser mayor que cero
-                    </span>
+                    <input type="number" class="form-control" placeholder="Precio del producto" formControlName="precio">
+                    @if (isValidField('precio')) {
+
+                        <span class="form-text text-danger">
+                            Debe de ser mayor que cero
+                        </span>
+                    }
                 </div>
             </div>
             <!-- Campo de existencias -->
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Existencias</label>
                 <div class="col-sm-9">
-                    <input type="number" class="form-control" placeholder="Existencias del producto" formControlName="existencias" required min="0">
-                    <span class="form-text text-danger">
-                        Debe de ser mayor que cero
-                    </span>
+                    <input type="number" class="form-control" placeholder="Existencias del producto" formControlName="existencias">
+                    @if (isValidField('existencias')) {
+
+                        <span class="form-text text-danger">
+                            Debe de ser mayor que cero
+                        </span>
+                    }
                 </div>
             </div>
             <div class="row">
