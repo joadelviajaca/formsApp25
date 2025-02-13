@@ -11,5 +11,12 @@ export const routes: Routes = [
             { path: 'switches', component: SwitchesComponent },
             { path: '**', redirectTo: 'basicos' }
         ]
+
+    
+    },
+
+    { 
+        path: 'reactive',
+        loadChildren: () => import('./reactive/routes').then(mod => mod.routes)
     }
 ];
