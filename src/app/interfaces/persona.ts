@@ -7,3 +7,8 @@ export interface Favorito{
     id: number;
     nombre: string;
 }
+
+export interface Person {
+    genre: string;
+    notifications: boolean;
+}

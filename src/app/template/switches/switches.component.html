@@ -2,7 +2,7 @@
 <hr>
 
 
-<form>
+<form (ngSubmit)="submit()" #myForm="ngForm">
 
     <!-- Radio -->
     <div class="row mb-3">
@@ -15,6 +15,7 @@
                        value="M"
                        id="radioMasculino"
                        name="genero"
+                       [(ngModel)]="person.genre"
                        required>
                 <label class="form-check-label" for="radioMasculino">
                   Masculino
@@ -27,6 +28,7 @@
                        value="F"
                        id="radioFemenino"
                        name="genero"
+                       [(ngModel)]="person.genre"
                        required>
                 <label class="form-check-label" for="radioFemenino">
                   Femenino
@@ -45,7 +47,8 @@
                 <input class="form-check-input"
                        type="checkbox"
                        id="flexSwitchCheckChecked"
-                       name="notificaciones">
+                       name="notificaciones"
+                       [(ngModel)]="person.notifications">
                 <label class="form-check-label" for="flexSwitchCheckChecked">Quiero recibir notificaciones</label>
             </div>
 
@@ -61,6 +64,7 @@
                        type="checkbox"
                        id="flexCheckDefault"
                        name="terminos"
+                       [(ngModel)]="terms"
                        required>
                 <label class="form-check-label" for="flexCheckDefault">
                   Términos y condiciones de uso
@@ -73,12 +77,14 @@
     <!-- Boton submit -->
     <div class="row">
         <div class="col">
-            <button class="btn btn-primary float-end">
+            <button class="btn btn-primary float-end" [disabled]="myForm.invalid">
             
                 Guardar
             </button>
         </div>
     </div>
+
+    <p> Valid: {{myForm.valid}} </p>
 
     
 
